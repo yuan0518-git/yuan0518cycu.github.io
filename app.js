@@ -477,6 +477,7 @@ function showProductModal(product) {
       <div class="modal-rating">
         ${stars}
         <span class="modal-rating-text">${product.rating} (${product.reviews} 評價)</span>
+        <button class="view-reviews-btn" id="viewReviewsBtn" style="margin-left: 1rem; padding: 0.25rem 0.75rem; font-size: 0.8rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">查看評論</button>
       </div>
       <div class="modal-price-wrapper">
         <span class="modal-price">$${product.price}</span>
@@ -573,9 +574,127 @@ function showProductModal(product) {
     closeModal();
   });
 
-
+  // View reviews button
+  const viewReviewsBtn = document.getElementById('viewReviewsBtn');
+  if (viewReviewsBtn) {
+    viewReviewsBtn.onclick = () => {
+      openReviewsModal(product);
+    };
+  }
 
   productModal.classList.add('open');
+}
+
+// ==================== 評論功能 ====================
+const reviewsModal = document.getElementById('reviewsModal');
+const reviewsOverlay = document.getElementById('reviewsOverlay');
+const reviewsCloseBtn = document.getElementById('reviewsCloseBtn');
+const reviewsList = document.getElementById('reviewsList');
+const reviewsModalTitle = document.getElementById('reviewsModalTitle');
+const submitReviewBtn = document.getElementById('submitReviewBtn');
+const reviewInput = document.getElementById('reviewInput');
+const starInputs = document.querySelectorAll('.star-input');
+
+let currentRating = 0;
+let currentProductForReview = null;
+
+// 預設評論數據
+const DEFAULT_REVIEWS = [
+  { name: '王小明', rating: 5, text: '這件外套真的很保暖，而且非常輕便，穿起來一點負擔都沒有！', date: '2024-12-20' },
+  { name: '李華', rating: 4, text: '款式很好看，顏色也跟照片上一樣。就是袖子稍微長了一點點。', date: '2024-12-15' },
+  { name: '張美玲', rating: 5, text: '出貨速度很快，包裝也很完整。外套質感超乎預期，CP值很高！', date: '2024-12-10' }
+];
+
+function openReviewsModal(product) {
+  currentProductForReview = product;
+  reviewsModalTitle.textContent = `${product.name} - 商品評論`;
+  renderReviews();
+  reviewsModal.classList.add('open');
+}
+
+function renderReviews() {
+  reviewsList.innerHTML = '';
+  
+  DEFAULT_REVIEWS.forEach(review => {
+    const reviewItem = document.createElement('div');
+    reviewItem.className = 'review-item';
+    reviewItem.style.padding = '1rem';
+    reviewItem.style.backgroundColor = '#f9f9f9';
+    reviewItem.style.borderRadius = '0.5rem';
+    
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+      stars += `<span style="color: ${i <= review.rating ? '#fbbf24' : '#d4d4d4'};">★</span>`;
+    }
+    
+    reviewItem.innerHTML = `
+      <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+        <span style="font-weight: 600;">${review.name}</span>
+        <span style="color: #737373; font-size: 0.85rem;">${review.date}</span>
+      </div>
+      <div style="margin-bottom: 0.5rem;">${stars}</div>
+      <p style="color: #444; font-size: 0.95rem; line-height: 1.5;">${review.text}</p>
+    `;
+    reviewsList.appendChild(reviewItem);
+  });
+}
+
+// 星星評分點擊事件
+starInputs.forEach(star => {
+  star.addEventListener('click', () => {
+    currentRating = parseInt(star.dataset.value);
+    updateStarDisplay();
+  });
+});
+
+function updateStarDisplay() {
+  starInputs.forEach(star => {
+    const val = parseInt(star.dataset.value);
+    star.style.color = val <= currentRating ? '#fbbf24' : '#d4d4d4';
+  });
+}
+
+// 提交評論
+if (submitReviewBtn) {
+  submitReviewBtn.addEventListener('click', () => {
+    const text = reviewInput.value.trim();
+    if (currentRating === 0) {
+      alert('請選擇評分！');
+      return;
+    }
+    if (!text) {
+      alert('請輸入評論內容！');
+      return;
+    }
+    
+    const newReview = {
+      name: '訪客',
+      rating: currentRating,
+      text: text,
+      date: new Date().toISOString().split('T')[0]
+    };
+    
+    DEFAULT_REVIEWS.unshift(newReview);
+    renderReviews();
+    
+    currentRating = 0;
+    updateStarDisplay();
+    reviewInput.value = '';
+    
+    alert('評論提交成功！');
+  });
+}
+
+if (reviewsOverlay) {
+  reviewsOverlay.addEventListener('click', () => {
+    reviewsModal.classList.remove('open');
+  });
+}
+
+if (reviewsCloseBtn) {
+  reviewsCloseBtn.addEventListener('click', () => {
+    reviewsModal.classList.remove('open');
+  });
 }
 
 function closeModal() {
@@ -778,43 +897,12 @@ modalCloseBtn.addEventListener('click', closeModal);
 renderProducts();
 updateCart();
 
-// ==================== 開發團隊與心得彈窗 ====================
-const teamBtn = document.getElementById('teamBtn');
-const teamModal = document.getElementById('teamModal');
-const teamCloseBtn = document.getElementById('teamCloseBtn');
-const teamOverlay = document.getElementById('teamOverlay');
-
+// ==========// ==================== 開發團隊與心得彈窗 ====================
 const experienceBtn = document.getElementById('experienceBtn');
 const experienceModal = document.getElementById('experienceModal');
-const experienceCloseBtn = document.getElementById('experienceCloseBtn');
 const experienceOverlay = document.getElementById('experienceOverlay');
+const experienceCloseBtn = document.getElementById('experienceCloseBtn');
 
-// 開啟團隊彈窗
-if (teamBtn) {
-  teamBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const scrollbarWidth = getScrollbarWidth();
-    document.body.style.setProperty('--scrollbar-width', scrollbarWidth + 'px');
-    teamModal.classList.add('open');
-    document.body.classList.add('modal-open');
-  });
-}
-
-// 關閉團隊彈窗
-if (teamCloseBtn) {
-  teamCloseBtn.addEventListener('click', () => {
-    teamModal.classList.remove('open');
-    document.body.classList.remove('modal-open');
-  });
-}
-if (teamOverlay) {
-  teamOverlay.addEventListener('click', () => {
-    teamModal.classList.remove('open');
-    document.body.classList.remove('modal-open');
-  });
-}
-
-// 開啟心得彈窗
 if (experienceBtn) {
   experienceBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -825,15 +913,15 @@ if (experienceBtn) {
   });
 }
 
-// 關閉心得彈窗
-if (experienceCloseBtn) {
-  experienceCloseBtn.addEventListener('click', () => {
+if (experienceOverlay) {
+  experienceOverlay.addEventListener('click', () => {
     experienceModal.classList.remove('open');
     document.body.classList.remove('modal-open');
   });
 }
-if (experienceOverlay) {
-  experienceOverlay.addEventListener('click', () => {
+
+if (experienceCloseBtn) {
+  experienceCloseBtn.addEventListener('click', () => {
     experienceModal.classList.remove('open');
     document.body.classList.remove('modal-open');
   });

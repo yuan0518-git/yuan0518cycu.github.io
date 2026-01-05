@@ -466,76 +466,54 @@
   <!-- Overlay for mobile -->
   <div class="overlay" id="overlay"></div>
 
-  <!-- Team Modal -->
-  <div class="modal" id="teamModal">
-    <div class="modal-overlay" id="teamOverlay"></div>
-    <div class="modal-content">
-      <button class="modal-close" id="teamCloseBtn">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-      <div class="modal-body">
-        <h2 style="margin-bottom: 1.5rem; text-align: center; display: flex; align-items: center; justify-content: center; min-height: 3rem;">開發團隊</h2>
-        <div class="team-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; text-align: center;">
-          <div class="team-member">
-            <div class="member-avatar">
-              <img src="image\cao.jpg" alt="曹縣元" onerror="this.src='https://ui-avatars.com/api/?name=曹&background=f0f0f0&color=111&size=128'">
-            </div>
-            <p style="font-weight: 600;">曹縣元</p>
-          </div>
-          <div class="team-member">
-            <div class="member-avatar">
-              <img src="image\yeh.jpg" alt="葉定紘" onerror="this.src='https://ui-avatars.com/api/?name=葉&background=f0f0f0&color=111&size=128'">
-            </div>
-            <p style="font-weight: 600;">葉定紘</p>
-          </div>
-          <div class="team-member">
-            <div class="member-avatar">
-              <img src="image\huang.jpg" alt="黃雍原" onerror="this.src='https://ui-avatars.com/api/?name=黃&background=f0f0f0&color=111&size=128'">
-            </div>
-            <p style="font-weight: 600;">黃雍原</p>
-          </div>
-          <div class="team-member">
-            <div class="member-avatar">
-              <img src="image\ko.jpg" alt="柯宥安" onerror="this.src='https://ui-avatars.com/api/?name=柯&background=f0f0f0&color=111&size=128'">
-            </div>
-            <p style="font-weight: 600;">柯宥安</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Experience Modal -->
+  <!-- Team & Experience Modal -->
   <div class="modal" id="experienceModal">
     <div class="modal-overlay" id="experienceOverlay"></div>
-    <div class="modal-content">
+    <div class="modal-content team-experience-container">
       <button class="modal-close" id="experienceCloseBtn">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </button>
-      <div class="modal-body" style="max-height: 80vh; overflow-y: auto;">
-        <h2 style="margin-bottom: 1.5rem; text-align: center; display: flex; align-items: center; justify-content: center; min-height: 3rem;">開發心得</h2>
-        <div class="experience-list" style="display: flex; flex-direction: column; gap: 2rem;">
-          <div class="experience-item">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #111;">曹縣元</h3>
-            <p style="color: #444; line-height: 1.6; font-size: 0.95rem;">在這次專案開發過程中，我深刻體會到團隊合作的重要性。從最初的架構設計到最後的細節優化，每一個環節都需要成員間的緊密溝通。透過解決各種技術難題，我不僅提升了前端開發技巧，更學會了如何從使用者角度思考產品功能，這是一次非常寶貴的實戰經驗，也使我們共同打造出一個有模有樣的網站。</p>
+      <div class="modal-body" style="max-height: 80vh; overflow-y: auto; padding: 2rem;">
+        <h2 style="margin-bottom: 1.5rem; text-align: center; display: flex; align-items: center; justify-content: center; min-height: 3rem;">開發團隊與心得</h2>
+        <div class="experience-list" style="display: flex; flex-direction: column; gap: 2.5rem;">
+          <div class="experience-item" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+            <div class="member-avatar" style="flex-shrink: 0; width: 80px; height: 80px; border-radius: 50%; overflow: hidden; border: 2px solid #eee;">
+              <img src="image/cao.jpg" alt="曹縣元" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://ui-avatars.com/api/?name=曹&background=f0f0f0&color=111&size=128'">
+            </div>
+            <div class="experience-text">
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #111; font-weight: 600;">曹縣元</h3>
+              <p style="color: #444; line-height: 1.6; font-size: 0.95rem;">在這次專案開發過程中，我深刻體會到團隊合作的重要性。從最初的架構設計到最後的細節優化，每一個環節都需要成員間的緊密溝通。透過解決各種技術難題，我不僅提升了前端開發技巧，更學會了如何從使用者角度思考產品功能，這是一次非常寶貴的實戰經驗，也使我們共同打造出一個有模有樣的網站。</p>
+            </div>
           </div>
-          <div class="experience-item">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #111;">葉定紘</h3>
-            <p style="color: #444; line-height: 1.6; font-size: 0.95rem;">參與這個羽絨外套專賣店的開發，讓我對響應式網頁設計有了更深入的理解。特別是在處理手機版介面與彈窗互動時，遇到了不少挑戰，但透過不斷的測試與修正，最終達到了流暢的使用體驗。看到自己親手寫下的代碼轉化為精美的網頁介面，那種成就感是無與倫比的，也讓我對未來的開發之路充滿信心。</p>
+          <div class="experience-item" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+            <div class="member-avatar" style="flex-shrink: 0; width: 80px; height: 80px; border-radius: 50%; overflow: hidden; border: 2px solid #eee;">
+              <img src="image/yeh.jpg" alt="葉定紘" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://ui-avatars.com/api/?name=葉&background=f0f0f0&color=111&size=128'">
+            </div>
+            <div class="experience-text">
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #111; font-weight: 600;">葉定紘</h3>
+              <p style="color: #444; line-height: 1.6; font-size: 0.95rem;">參與這個羽絨外套專賣店的開發，讓我對響應式網頁設計有了更深入的理解。特別是在處理手機版介面與彈窗互動時，遇到了不少挑戰，但透過不斷的測試與修正，最終達到了流暢的使用體驗。看到自己親手寫下的代碼轉化為精美的網頁介面，那種成就感是無與倫比的，也讓我對未來的開發之路充滿信心。</p>
+            </div>
           </div>
-          <div class="experience-item">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #111;">黃雍原</h3>
-            <p style="color: #444; line-height: 1.6; font-size: 0.95rem;">這次專案讓我學會了如何有效地管理複雜的狀態與資料流。在實作購物車功能與商品篩選系統時，邏輯的嚴謹性至關重要。我花了很多時間在優化代碼結構，確保系統的穩定性與擴充性。與隊友們的技術交流也讓我獲益良多，大家互相支援、共同進步的氛圍，是我們能夠如期完成這個高品質專案的關鍵因素。</p>
+          <div class="experience-item" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+            <div class="member-avatar" style="flex-shrink: 0; width: 80px; height: 80px; border-radius: 50%; overflow: hidden; border: 2px solid #eee;">
+              <img src="image/huang.jpg" alt="黃雍原" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://ui-avatars.com/api/?name=黃&background=f0f0f0&color=111&size=128'">
+            </div>
+            <div class="experience-text">
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #111; font-weight: 600;">黃雍原</h3>
+              <p style="color: #444; line-height: 1.6; font-size: 0.95rem;">這次專案讓我學會了如何有效地管理複雜的狀態與資料流。在實作購物車功能與商品篩選系統時，邏輯的嚴謹性至關重要。我花了很多時間在優化代碼結構，確保系統的穩定性與擴充性。與隊友們的技術交流也讓我獲益良多，大家互相支援、共同進步的氛圍，是我們能夠如期完成這個高品質專案的關鍵因素。</p>
+            </div>
           </div>
-          <div class="experience-item">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #111;">柯宥安</h3>
-            <p style="color: #444; line-height: 1.6; font-size: 0.95rem;">這次的專案讓我了解到，網站設計除了外觀之外，是否能吸引使用者也很重要。我第一次嘗試設計 logo，一開始沒有太多想法，從羽絨衣的造型搭配雪花元素發想，並結合台灣人熟悉的諧音梗，增加記憶點。網站介面我們透過清楚的分類，想讓使用者能快速找到內容，也願意進一步了解網站。這次的設計過程對我來說是一個很新奇的體驗。</p>
+          <div class="experience-item" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+            <div class="member-avatar" style="flex-shrink: 0; width: 80px; height: 80px; border-radius: 50%; overflow: hidden; border: 2px solid #eee;">
+              <img src="image/ko.jpg" alt="柯宥安" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://ui-avatars.com/api/?name=柯&background=f0f0f0&color=111&size=128'">
+            </div>
+            <div class="experience-text">
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #111; font-weight: 600;">柯宥安</h3>
+              <p style="color: #444; line-height: 1.6; font-size: 0.95rem;">這次的專案讓我了解到，網站設計除了外觀之外，是否能吸引使用者也很重要。我第一次嘗試設計 logo，一開始沒有太多想法，從羽絨衣的造型搭配雪花元素發想，並結合台灣人熟悉的諧音梗，增加記憶點。網站介面我們透過清楚的分類，想讓使用者能快速找到內容，也願意進一步了解網站。這次的設計過程對我來說是一個很新奇的體驗。</p>
+            </div>
           </div>
         </div>
       </div>
@@ -558,6 +536,41 @@
     </div>
   </div>
 
+  <!-- Product Reviews Modal -->
+  <div class="modal" id="reviewsModal">
+    <div class="modal-overlay" id="reviewsOverlay"></div>
+    <div class="modal-content reviews-container">
+      <button class="modal-close" id="reviewsCloseBtn">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="modal-body" style="padding: 2rem; max-height: 85vh; overflow-y: auto;">
+        <h2 id="reviewsModalTitle" style="margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: bold;">商品評論</h2>
+        
+        <!-- 發表評論表單 -->
+        <div class="add-review-section" style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #eee;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">發表您的評論</h3>
+          <div class="rating-input" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+            <span class="star-input" data-value="1" style="cursor: pointer; font-size: 1.5rem; color: #d4d4d4;">★</span>
+            <span class="star-input" data-value="2" style="cursor: pointer; font-size: 1.5rem; color: #d4d4d4;">★</span>
+            <span class="star-input" data-value="3" style="cursor: pointer; font-size: 1.5rem; color: #d4d4d4;">★</span>
+            <span class="star-input" data-value="4" style="cursor: pointer; font-size: 1.5rem; color: #d4d4d4;">★</span>
+            <span class="star-input" data-value="5" style="cursor: pointer; font-size: 1.5rem; color: #d4d4d4;">★</span>
+          </div>
+          <textarea id="reviewInput" placeholder="分享您的穿著體驗..." style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 0.5rem; min-height: 100px; margin-bottom: 1rem; font-family: inherit;"></textarea>
+          <button id="submitReviewBtn" class="submit-btn" style="width: auto; padding: 0.75rem 2rem;">提交評論</button>
+        </div>
+
+        <!-- 評論列表 -->
+        <div id="reviewsList" class="reviews-list" style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <!-- 評論內容將由 JS 動態插入 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
@@ -569,8 +582,7 @@
         <div class="footer-links">
           <div class="footer-link-group">
             <h4>組員介紹</h4>
-            <a href="#" class="footer-link" id="teamBtn">開發團隊</a>
-            <a href="#" class="footer-link" id="experienceBtn">開發心得</a>
+            <a href="#" class="footer-link" id="experienceBtn">開發團隊與心得</a>
           </div>
           
           <div class="footer-link-group">
